@@ -1,0 +1,63 @@
+.header{
+    width: 100%;
+    float: left;
+    background-color: #ffffff;
+    border-bottom-style: solid;
+    border-color: #cccccc;
+    font-size: 25px;
+    padding: 1px 30%;
+}
+.header-right{
+    float: right;
+}
+.name{
+    background: #4aaaa5;
+    font-weight: bold;
+    
+}
+body{
+    width: 960px;
+    background-color: lightgrey;
+}
+.Contact{
+    width: 50%;
+    margin-left: 14%;
+    float: left;
+    color: black;
+    background-color: whitesmoke;
+    padding: 20px;
+    position: fixed;
+    top: 10%;
+    
+}
+.br{
+    line-height: 50px;
+}
+.Title{
+    border-bottom-style: solid;
+    color: #4aaaa5;
+    border-bottom-width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+input{
+        width: 25%;
+}
+button{
+    color: white;
+    background-color: #4aaaa5;
+}
+footer{
+    position: fixed;
+    left: 0px;
+    top: 45%;
+    width: 80%;
+    background-color: grey;
+    text-align: center;
+    font-weight: bold;
+    border-top-style: solid;
+    border-top-color: #4aaaa5;
+    border-top-width: thick;
+    
+}
