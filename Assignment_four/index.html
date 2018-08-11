@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title>Crystal Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel = "stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+        <div class="container header">
+                <div class="row">
+                  <div class="col-lg-5 crystals">
+                    <p class="name">Crystals Collector!</p>
+                  </div>
+                  </div>
+            </div>
+            
+            
+            <div class="row">
+                  
+                  <div class="col-lg-1 ">
+                    
+                  </div>
+                  <div class="col-lg-10 paragraphs">
+                    <p><!-- start slipsum code -->
+            
+            You will be given a random number at the start of the game.
+            </p>
+            There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
+            <p>
+            You win the game by matching your total score to the random number given at the start. You lose the game if your total score goes higher than the random number given.
+            </p> 
+            <p>
+            The value of each crystal is hidden until you click on it. Each time the game restarts, the game will change the value of the crystals.
+            </p>
+        </div>
+                  
+      <div class="col-lg-7 container">     
+    <div class="game">
+        <h1> Crystal Game </h1>
+
+        <button id="1" class="crystal">
+            <img src="images/blue crystal.png" alt="1" />
+        </button>
+        <button id="2" class="crystal">
+            <img src="images/gray crystal.png" alt="2" />
+        </button>
+        <button id="3" class="crystal">
+            <img src="images/green crystal.png" alt="3" />
+        </button>
+        <button id="4" class="crystal">
+            <img src="images/red crystal.png" alt="4" />
+        </button>
+
+        <p>Magic Number: <strong id="magicNumberIndicator"></strong></p>
+        <p>Wins: <strong id="winsIndicator">0</strong></p>
+        <p>Losses:<strong id="lossesIndicator">0</strong></p>
+        <p>Your total Score is <strong id="totalScoreIndicator">0</strong></p>
+    </div>
+</div> 
+
+    <script type="text/javascript">
+        var wins = 0;
+        var losses = 0;
+        var totalScore = 0;
+
+        var magicNumberIndicator = document.getElementById('magicNumberIndicator')
+        var winsIndicator = document.getElementById('winsIndicator');
+        var lossesIndicator = document.getElementById('lossesIndicator');
+        var totalScoreIndicator = document.getElementById('totalScoreIndicator');
+
+        var button1 = document.getElementById('1');
+        var button2 = document.getElementById('2');
+        var button3 = document.getElementById('3');
+        var button4 = document.getElementById('4');
+
+        var magicNum;
+        var button1Value;
+        var button2Value;
+        var button3Value;
+        var button4Value;
+
+        setupGame();
+
+        button1.addEventListener('click', function() {
+            totalScore += button1Value;
+            checkScoreVsMagicNum()
+            console.log(totalScore);
+        })
+        button2.addEventListener('click', function() {
+            totalScore += button2Value;
+            checkScoreVsMagicNum()
+            console.log(totalScore);
+        })
+        button3.addEventListener('click', function() {
+            totalScore += button3Value;
+            checkScoreVsMagicNum()
+            console.log(totalScore);
+        })
+        button4.addEventListener('click', function() {
+            totalScore += button4Value;
+            checkScoreVsMagicNum()
+            console.log(totalScore);
+        })
+        
+        // Helper functions
+
+        function setupGame() {
+            magicNum = getRandomInRange(19, 120);
+            magicNumberIndicator.innerText = magicNum;
+
+            button1Value = getRandomInRange(1, 12);
+            button2Value = getRandomInRange(1, 12);
+            button3Value = getRandomInRange(1, 12);
+            button4Value = getRandomInRange(1, 12);
+        }
+
+        function getRandomInRange(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        function checkScoreVsMagicNum() {
+            if (totalScore === magicNum) {
+                wins++;
+                winsIndicator.innerText = wins;
+                resetGame();
+            } else if (totalScore > magicNum) {
+                console.log('LOSS CONDITION')
+                losses++;
+                lossesIndicator.innerText = losses;
+                resetGame();
+            } else {
+                totalScoreIndicator.innerText = totalScore;
+            }
+        }
+
+        function resetGame() {
+            console.log('RESET GAME');
+            totalScore = 0; // set user's score back to 0 for next game
+            totalScoreIndicator.innerText = totalScore;
+            setupGame();
+        }
+    </script>
+   
+</body>
+
+
+</html>
